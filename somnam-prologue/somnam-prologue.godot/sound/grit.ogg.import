@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/grit.ogg-d3037493e4d1442cb1db740d66dfe8bc.oggstr"
+
+[deps]
+
+source_file="res://sound/grit.ogg"
+dest_files=[ "res://.import/grit.ogg-d3037493e4d1442cb1db740d66dfe8bc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

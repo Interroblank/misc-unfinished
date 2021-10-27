@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://interface/SONORM__.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://interface/menu.png" type="Texture" id=2]
+[ext_resource path="res://interface/StartGame.gd" type="Script" id=3]
+[ext_resource path="res://interface/fullscreen.png" type="Texture" id=4]
+[ext_resource path="res://interface/Button_FS.gd" type="Script" id=5]
+[ext_resource path="res://interface/QuitGame.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.137255, 0.137255, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.392157, 0, 0, 0.647059 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+draw_center = false
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.137255, 0.137255, 0.137255, 0.392157 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.392157, 0, 0, 0.647059 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Background" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Sprite" parent="Background"]
+position = Vector2( 640, 360 )
+scale = Vector2( 0.666, 0.666 )
+texture = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Control"]
+margin_left = 550.0
+margin_top = 525.0
+margin_right = 730.0
+margin_bottom = 695.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" type="Button" parent="Control/Buttons"]
+margin_top = 6.0
+margin_right = 180.0
+margin_bottom = 83.0
+focus_mode = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
+text = "DESCEND"
+script = ExtResource( 3 )
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="Control/Buttons/StartGame"]
+
+[node name="QuitGame" type="Button" parent="Control/Buttons"]
+margin_top = 87.0
+margin_right = 180.0
+margin_bottom = 164.0
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 4 )
+enabled_focus_mode = 0
+text = "FLEE"
+script = ExtResource( 6 )
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="Control/Buttons/QuitGame"]
+
+[node name="Button_FS" type="TextureButton" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="Button_FS"]
+
+[connection signal="pressed" from="Control/Buttons/StartGame" to="Control/Buttons/StartGame" method="_on_StartGame_pressed"]
+[connection signal="pressed" from="Control/Buttons/QuitGame" to="Control/Buttons/QuitGame" method="_on_QuitGame_pressed"]
+[connection signal="pressed" from="Button_FS" to="Button_FS" method="_on_Button_FS_pressed"]

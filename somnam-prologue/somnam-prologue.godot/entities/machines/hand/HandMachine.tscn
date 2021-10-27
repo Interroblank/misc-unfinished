@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities/machines/hand/HandDown1.png" type="Texture" id=1]
+[ext_resource path="res://entities/Damage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/machines/hand/HandMachine.gd" type="Script" id=3]
+[ext_resource path="res://entities/machines/hand/HandDown2.png" type="Texture" id=4]
+[ext_resource path="res://entities/machines/hand/HandDown3.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 24.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Down",
+"speed": 2.0
+} ]
+
+[node name="HandMachine" type="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[node name="HandCollide" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="HandSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "Down"
+frame = 2
+
+[node name="DamageZone" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 2, 2 )

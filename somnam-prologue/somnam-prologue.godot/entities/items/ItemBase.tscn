@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/items/ItemBase.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="ItemBase" type="Area2D"]
+script = ExtResource( 2 )
+item = "BaseItem"
+
+[node name="ItemCollide" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

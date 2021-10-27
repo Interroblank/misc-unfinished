@@ -1,0 +1,82 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://entities/player/Left_3.png" type="Texture" id=1]
+[ext_resource path="res://entities/PlayerBody.gd" type="Script" id=2]
+[ext_resource path="res://entities/player/Right_1.png" type="Texture" id=3]
+[ext_resource path="res://entities/player/Down_1.png" type="Texture" id=4]
+[ext_resource path="res://entities/player/Left_1.png" type="Texture" id=5]
+[ext_resource path="res://entities/player/Right_2.png" type="Texture" id=6]
+[ext_resource path="res://entities/player/Up_1.png" type="Texture" id=7]
+[ext_resource path="res://entities/player/Down_3.png" type="Texture" id=8]
+[ext_resource path="res://entities/player/Right_3.png" type="Texture" id=9]
+[ext_resource path="res://entities/player/Up_3.png" type="Texture" id=10]
+[ext_resource path="res://entities/player/Up_2.png" type="Texture" id=11]
+[ext_resource path="res://entities/player/Down_2.png" type="Texture" id=12]
+[ext_resource path="res://entities/player/Left_2.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Down",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": false,
+"name": "IdleD",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "IdleU",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "IdleL",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "IdleR",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Up",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.42105, 16.8421 )
+
+[node name="Player" type="Node2D"]
+
+[node name="PlayerBody" type="KinematicBody2D" parent="."]
+rotation = -1.57078
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
+rotation = 1.5708
+frames = SubResource( 1 )
+animation = "IdleU"
+
+[node name="PlayerCollide" type="CollisionShape2D" parent="PlayerBody"]
+position = Vector2( -24, 0.000390911 )
+scale = Vector2( 0.95, 0.95 )
+shape = SubResource( 2 )
+
+[node name="InvFrames" type="Timer" parent="PlayerBody"]
+wait_time = 2.0
+[connection signal="timeout" from="PlayerBody/InvFrames" to="PlayerBody" method="_on_InvFrames_timeout"]
