@@ -10,4 +10,6 @@ This was to be a primarily text-based god game written in Lua for the LÖVE Engi
 This was a nearly-complete dungeon generation algorithm that I wrote in Lua using the Roblox API.
 
 ## SOMNAM: Prologue
-This was a game I started working on in early 2020. Development started in the LÖVE Engine before moving to Godot.
+This was a game I started working on in early 2020.
+
+Development started in the LÖVE Engine before moving to Godot.
